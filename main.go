@@ -15,9 +15,16 @@ import (
 )
 
 func main() {
+	log.Printf("Getting env vars: TG_API_KEY, TANKERKOENIG_API_KEY, TARGET_CHAT_ID")
+
 	tgApiKey := os.Getenv("TG_API_KEY")
 	apiKey := os.Getenv("TANKERKOENIG_API_KEY")
 	chatId, _ := strconv.ParseInt(os.Getenv("TARGET_CHAT_ID"), 10, 64)
+
+	if tgApiKey == "" || apiKey == "" || chatId == 0 {
+		log.Fatal("Missing env vars: TG_API_KEY, TANKERKOENIG_API_KEY, TARGET_CHAT_ID")
+		return
+	}
 
 	gasStations := map[string]string{
 		"df44694b-e38d-4b5c-8323-1c27afba3d0b": "Shell Holzappel Hauptstr. 104",
