@@ -1,0 +1,22 @@
+name: Go
+
+on:
+  schedule:
+    - cron: '0,30 * * * *'
+  push:
+    branches: [ "base" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.21.0'
+
+    - name: Run
+      run: go run main.go
