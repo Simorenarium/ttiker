@@ -20,3 +20,7 @@ jobs:
 
     - name: Run
       run: go run main.go
+      env:
+        TG_API_KEY: ${{ secrets.TG_API_KEY }}
+        TARGET_CHAT_ID: ${{ secrets.TARGET_CHAT_ID }}
+        TANKERKOENIG_API_KEY: ${{ secrets.TANKERKOENIG_API_KEY }}
